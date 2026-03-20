@@ -11,9 +11,10 @@ passo a passo do wokflow
 6 - fechamento de relatorio e envio por email
 '''
 
-print("##########  TABELA DE VENDAS ##########")
-
-
+print('\n')
+print("*" * 25, "TABELA DE VENDAS", "*" * 25)
+print("*" * 68)
+print('\n')
 #1 - importar a base de dados
 pd.set_option('display.max_columns', None)
 tabela_vendas = pd.read_excel("vendas.xlsx")
@@ -21,21 +22,31 @@ print(tabela_vendas)
 
 
 #2 - Faturamento por loja
+print("*" * 68)
 print("Faturamento por LOJAS")
-faturamento = tabela_vendas[["id_loja","valor_unitario", "valor_final"]].groupby("id_loja").sum()
+print('\n')
+faturamento = tabela_vendas[["id_loja", "valor_unitario", "valor_final", "quantidade_vendida"]].groupby("id_loja").sum()
 print(faturamento)
 
 #3 - Quantidade de produtos vendidos por loja
+print("*" * 68)
 print("Quantidade de produtos vendidos por LOJAS")
-faturamento_lojas = tabela_vendas[["id_loja", "quantidade_vendida"]].groupby("id_loja").sum()
+print('\n')
+faturamento_lojas = tabela_vendas[["id_loja","quantidade_vendida"]].groupby("id_loja").sum()
 print(faturamento_lojas)
 
 
-#4 - Ticket medio por produto em casa loja
-
+#4 - Ticket medio por produto em cada loja
+print("*" * 68)
+print("Ticket médio por produto em lojas")
+print('\n')
+ticket_medio = faturamento["valor_final"] / faturamento["quantidade_vendida"]
+print(ticket_medio)
 
 #5 - Envio do relatorio por email
 
 
-
-print("#####  FECHAMENTO DO SISTEMA - VENDAS PYTHON #####")
+print('\n')
+print("*" * 25, "FECHAMENTO DE SISTEMA", "*" * 25)
+print("*" * 68)
+print('\n')
