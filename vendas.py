@@ -40,7 +40,7 @@ print(faturamento_lojas)
 print("*" * 68)
 print("Ticket médio por produto em lojas")
 print('\n')
-ticket_medio = faturamento["valor_final"] / faturamento["quantidade_vendida"]
+ticket_medio = (faturamento["valor_final"] / faturamento_lojas["quantidade_vendida"]).to_frame()
 print(ticket_medio)
 
 #5 - Envio do relatorio por email
