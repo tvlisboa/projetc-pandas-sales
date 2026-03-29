@@ -8,17 +8,17 @@ pd.set_option('display.max_columns', None)
 print(tabela_instalacao)
 
 #quantidade total de aparelhos instalados
-tabela_total_aparelhos = tabela_instalacao.groupby("cod_tecnico").sum()
+#a anotacao .sum(numeric_only=True) instrui ao pandas ignorar as strings, usando somente numerics.
+tabela_total_aparelhos = tabela_instalacao.drop(columns='patrimonio_aparelho').groupby(['cod_tecnico']).sum(numeric_only=True)
 print(tabela_total_aparelhos)
 
-#quantidade total por tecnico
+#quantidade total instalado por tecnico
+quantidade_instalado = tabela_instalacao[['cod_tecnico', 'qtd_aparelhos_instalados']]
+
 
 #ticket medio de instalacao semanal por tecnico
 
 #quantidade descriminada por telefones instalados
 
 #enviar relatorio por email
-
-
-
-print("26 de marco de 2026")
+print("Chegou ate aqui")
