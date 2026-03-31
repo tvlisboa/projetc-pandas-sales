@@ -33,17 +33,21 @@ print(qtd_insta_tecnico)
 #
 #
 #
-#ticket medio de instalacao semanal por tecnico
-ticket_medio = tabela_instalacao.drop(columns='patrimonio_aparelho').groupby(['cod_tecnico']).median(numeric_only=True)
+#ticket medio de instalacao por tecnico
+ticket_medio = (tabela_total_aparelhos['qtd_aparelhos_instalados'] / qtd_insta_tecnico['qtd_aparelhos_instalados']).to_frame()
 print("Ticket medio por tecnico")
 print(ticket_medio)
 #
 #
 #
 #quantidade descriminada por telefones instalados
-
+#
+#
+#
 #enviar relatorio por email
-
+#
+#
+#
 
 print('\n')
 print("*" * 25, "FECHAMENTO DE SISTEMA - INSTALACAO MACAE", "*" * 25)
